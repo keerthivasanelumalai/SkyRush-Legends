@@ -1,0 +1,358 @@
+/* ===================================================
+   SKYRUSH LEGENDS - IN-GAME HUD & GAMEPLAY OVERLAYS
+   =================================================== */
+
+#hud-layer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1.5rem 2rem;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+/* Top HUD Bar */
+.hud-top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  pointer-events: none;
+}
+
+/* Left: Score & Distance */
+.hud-stats-left {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  pointer-events: auto;
+}
+
+.hud-score-display {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.hud-score-number {
+  font-family: var(--font-game);
+  font-size: clamp(2.4rem, 5vw, 4rem);
+  font-weight: 900;
+  line-height: 1;
+  color: #ffffff;
+  text-shadow: 0 4px 15px rgba(0, 0, 0, 0.8), 0 0 20px rgba(99, 102, 241, 0.6);
+  letter-spacing: -0.02em;
+}
+
+.hud-score-label {
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #94a3b8;
+}
+
+.hud-distance-pill {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid var(--border-glass);
+  padding: 4px 12px;
+  border-radius: 20px;
+  backdrop-filter: blur(8px);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #cbd5e1;
+  width: fit-content;
+}
+
+/* Center: Level Objectives / Mode Info */
+.hud-center-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  pointer-events: none;
+}
+
+.hud-objective-pill {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(15, 23, 42, 0.7);
+  border: 1px solid var(--border-glass);
+  padding: 6px 16px;
+  border-radius: 20px;
+  backdrop-filter: blur(8px);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #e2e8f0;
+}
+
+.hud-objective-pill.completed {
+  border-color: var(--color-success);
+  color: #86efac;
+}
+
+/* Right: In-Run Currency & Pause Button */
+.hud-stats-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  pointer-events: auto;
+}
+
+.hud-coins-pill {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid rgba(245, 158, 11, 0.4);
+  padding: 6px 14px;
+  border-radius: 20px;
+  backdrop-filter: blur(8px);
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: var(--color-gold);
+}
+
+.btn-pause {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: rgba(15, 23, 42, 0.75);
+  border: 1px solid var(--border-glass);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  backdrop-filter: blur(8px);
+  transition: all var(--transition-fast);
+  outline: none;
+}
+
+.btn-pause:hover {
+  background: rgba(30, 41, 59, 0.9);
+  border-color: var(--border-glass-glow);
+  transform: scale(1.08);
+}
+
+/* Active Power-Ups Shelf (Center Left) */
+.hud-powerups-container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-self: flex-start;
+  margin-top: 1rem;
+  pointer-events: none;
+}
+
+.powerup-pill {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(15, 23, 42, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 6px 12px;
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+  animation: slideInRight 0.3s ease-out;
+}
+
+.powerup-pill.shield { border-color: #38bdf8; box-shadow: 0 0 12px rgba(56, 189, 248, 0.4); }
+.powerup-pill.magnet { border-color: #f59e0b; box-shadow: 0 0 12px rgba(245, 158, 11, 0.4); }
+.powerup-pill.slowmo { border-color: #34d399; box-shadow: 0 0 12px rgba(52, 211, 153, 0.4); }
+.powerup-pill.double { border-color: #fbbf24; box-shadow: 0 0 12px rgba(251, 191, 36, 0.4); }
+.powerup-pill.boost  { border-color: #f43f5e; box-shadow: 0 0 12px rgba(244, 63, 94, 0.4); }
+
+.powerup-name {
+  font-size: 0.8rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #ffffff;
+}
+
+.powerup-timer-bar {
+  width: 60px;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.powerup-timer-fill {
+  height: 100%;
+  background: #ffffff;
+  border-radius: 3px;
+  transition: width 0.1s linear;
+}
+
+/* Combo Gauge & Multiplier */
+.hud-combo-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-self: center;
+  margin-top: 1rem;
+  gap: 4px;
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 0.2s, transform 0.2s;
+  pointer-events: none;
+}
+
+.hud-combo-container.active {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.combo-badge {
+  font-family: var(--font-game);
+  font-size: 1.8rem;
+  font-weight: 900;
+  letter-spacing: 0.05em;
+  color: #fbbf24;
+  text-shadow: 0 0 15px rgba(245, 158, 11, 0.8), 0 2px 5px rgba(0, 0, 0, 0.8);
+  animation: comboPunch 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.combo-gauge-bar {
+  width: 140px;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.combo-gauge-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #f59e0b, #ef4444);
+  width: 100%;
+  transition: width 0.05s linear;
+}
+
+/* Touch & Gameplay Prompt */
+.hud-hint-overlay {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-self: center;
+  margin-bottom: 2rem;
+  gap: 8px;
+  pointer-events: none;
+  opacity: 0.85;
+  animation: floatGentle 2.5s infinite;
+}
+
+.hint-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 2px dashed rgba(255, 255, 255, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(15, 23, 42, 0.5);
+}
+
+.hint-text {
+  font-size: 0.95rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #ffffff;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+}
+
+/* Fullscreen Vignette FX */
+#fx-vignette {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 2;
+  box-shadow: inset 0 0 80px rgba(0, 0, 0, 0.6);
+}
+
+#fx-damage-flash {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 3;
+  background: radial-gradient(circle, rgba(239, 68, 68, 0) 50%, rgba(239, 68, 68, 0.6) 100%);
+  opacity: 0;
+  transition: opacity 0.15s ease-out;
+}
+
+#fx-speed-lines {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 2;
+  opacity: 0;
+  background: repeating-linear-gradient(
+    90deg,
+    transparent 0px,
+    transparent 40px,
+    rgba(255, 255, 255, 0.04) 41px,
+    transparent 42px
+  );
+  transition: opacity 0.2s ease-out;
+}
+
+/* Floating Popups container */
+#floating-popups-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 4;
+}
+
+.floating-text {
+  position: absolute;
+  font-family: var(--font-game);
+  font-weight: 900;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  animation: floatUpFade 0.9s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+@keyframes floatUpFade {
+  0% { opacity: 0; transform: translate(-50%, 0px) scale(0.6); }
+  30% { opacity: 1; transform: translate(-50%, -15px) scale(1.15); }
+  100% { opacity: 0; transform: translate(-50%, -45px) scale(0.9); }
+}
+
+@media (max-width: 600px) {
+  #hud-layer {
+    padding: 0.8rem 1rem;
+  }
+  .hud-score-number {
+    font-size: 2.2rem;
+  }
+  .hud-distance-pill {
+    font-size: 0.75rem;
+  }
+  .hud-coins-pill {
+    padding: 4px 10px;
+    font-size: 0.9rem;
+  }
+}

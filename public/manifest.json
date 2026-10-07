@@ -1,0 +1,21 @@
+{
+  "name": "SkyRush Legends",
+  "short_name": "SkyRush",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a0c16",
+  "theme_color": "#4f46e5",
+  "orientation": "any",
+  "icons": [
+    {
+      "src": "/assets/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

@@ -1,0 +1,358 @@
+/* ===================================================
+   SKYRUSH LEGENDS - MAIN MENU STYLING
+   =================================================== */
+
+#menu-screen {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1.5rem 2rem;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+}
+
+/* Header Bar */
+.menu-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* Player Mini Badge (Top Left) */
+.player-pill {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-glass);
+  padding: 8px 16px;
+  border-radius: 40px;
+  backdrop-filter: blur(12px);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.player-pill:hover {
+  background: var(--bg-card-hover);
+  border-color: var(--border-glass-glow);
+  transform: translateY(-2px);
+}
+
+.pill-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #6366f1, #312e81);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--color-gold);
+  box-shadow: 0 0 10px rgba(245, 158, 11, 0.4);
+}
+
+.pill-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.pill-name {
+  font-weight: 800;
+  font-size: 1rem;
+  color: #ffffff;
+  letter-spacing: 0.02em;
+}
+
+.pill-level-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.pill-level-tag {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--color-gold);
+  text-transform: uppercase;
+}
+
+.pill-xp-bar {
+  width: 90px;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.pill-xp-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #6366f1, #06b6d4);
+  width: 40%;
+  border-radius: 3px;
+  transition: width 0.3s ease;
+}
+
+/* Currency Counters (Top Right) */
+.currency-group {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.currency-pill {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-glass);
+  padding: 8px 16px;
+  border-radius: 30px;
+  backdrop-filter: blur(12px);
+  font-weight: 800;
+  font-size: 1.05rem;
+  letter-spacing: 0.03em;
+}
+
+.currency-pill.coins {
+  color: var(--color-gold);
+  border-color: rgba(245, 158, 11, 0.3);
+}
+
+.currency-pill.gems {
+  color: var(--color-gem);
+  border-color: rgba(217, 70, 239, 0.3);
+}
+
+/* Center Stage */
+.menu-center-stage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+  z-index: 5;
+}
+
+/* Title & Logo */
+.game-title-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+  position: relative;
+}
+
+.title-subtext {
+  font-family: var(--font-game);
+  font-size: 0.85rem;
+  font-weight: 800;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--color-secondary);
+  text-shadow: 0 0 10px rgba(6, 182, 212, 0.6);
+}
+
+.game-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.8rem, 6.5vw, 4.8rem);
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  background: linear-gradient(180deg, #ffffff 0%, #cbd5e1 45%, #818cf8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 6px 15px rgba(0, 0, 0, 0.8)) drop-shadow(0 0 25px rgba(99, 102, 241, 0.5));
+  margin: 0;
+  line-height: 1;
+}
+
+.game-title-tagline {
+  font-family: var(--font-game);
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #94a3b8;
+  letter-spacing: 0.05em;
+}
+
+/* Hero Creature Showcase Canvas */
+.hero-showcase-box {
+  width: 140px;
+  height: 140px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0.5rem 0;
+}
+
+.hero-showcase-box canvas {
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 8px 20px rgba(99, 102, 241, 0.5));
+}
+
+.hero-aura-ring {
+  position: absolute;
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  border: 1px dashed rgba(99, 102, 241, 0.4);
+  pointer-events: none;
+  animation: spinSlow 20s linear infinite;
+}
+
+/* Primary Play Actions */
+.main-action-group {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.2rem;
+  flex-wrap: wrap;
+}
+
+.btn-play-hero {
+  padding: 1.1rem 3.2rem;
+  font-size: 1.4rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #f59e0b 0%, #e11d48 100%);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 8px 30px rgba(225, 29, 72, 0.5), inset 0 2px 5px rgba(255, 255, 255, 0.4);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-play-hero:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 12px 40px rgba(225, 29, 72, 0.7), inset 0 2px 8px rgba(255, 255, 255, 0.6);
+}
+
+.btn-play-hero::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.35), transparent);
+  transform: skewX(-20deg);
+  animation: shimmerSweep 3.5s infinite;
+}
+
+/* Mode Switchers */
+.secondary-play-group {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.btn-mode {
+  padding: 0.85rem 1.8rem;
+  font-size: 1rem;
+  font-weight: 800;
+  border-radius: 14px;
+}
+
+/* Bottom Navigation Dock */
+.menu-bottom-dock {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0.6rem 1.2rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border-glass);
+  border-radius: 20px;
+  backdrop-filter: blur(14px);
+  flex-wrap: wrap;
+}
+
+.dock-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 8px 16px;
+  border-radius: 12px;
+  color: #94a3b8;
+  font-size: 0.78rem;
+  font-weight: 700;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  transition: all var(--transition-fast);
+  outline: none;
+}
+
+.dock-item svg {
+  width: 22px;
+  height: 22px;
+  transition: transform var(--transition-fast), fill var(--transition-fast);
+}
+
+.dock-item:hover {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.08);
+  transform: translateY(-2px);
+}
+
+.dock-item:hover svg {
+  transform: scale(1.15);
+  fill: var(--color-primary-light);
+}
+
+/* Responsive Scaling */
+@media (max-width: 900px) {
+  #menu-screen {
+    padding: 1rem;
+  }
+  .menu-bottom-dock {
+    gap: 0.4rem;
+    padding: 0.4rem 0.6rem;
+    border-radius: 16px;
+  }
+  .dock-item {
+    padding: 6px 10px;
+    font-size: 0.7rem;
+  }
+  .dock-item svg {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+@media (max-width: 600px) {
+  .pill-xp-bar {
+    display: none;
+  }
+  .pill-name {
+    font-size: 0.9rem;
+  }
+  .currency-pill {
+    padding: 6px 12px;
+    font-size: 0.95rem;
+  }
+  .btn-play-hero {
+    padding: 0.9rem 2.2rem;
+    font-size: 1.2rem;
+  }
+  .dock-item span {
+    display: none;
+  }
+  .dock-item {
+    padding: 8px;
+  }
+}
